@@ -1,11 +1,11 @@
-canadensys-explorer
+explorer
 ===================
 
-Canadensys data portal.
+Biodiversity data portal.
 
 Documentation
 -------------
-Visit our [wiki](https://github.com/Canadensys/canadensys-explorer/wiki)
+Visit our [wiki](https://github.com/WingLongitude/explorer/wiki)
 
 Dependencies
 ------------
@@ -27,11 +27,11 @@ Dependencies
 * [Selenium Client 2.43.1](http://docs.seleniumhq.org/download/) (for integration testing)
 
 ### Projects
-* [canadensys-web-theme](https://github.com/Canadensys/canadensys-web-theme)
+* [web-theme](https://github.com/WingLongitude/web-theme)
 
 Build
 -----
-Please follow instruction on our [wiki](https://github.com/Canadensys/canadensys-explorer/wiki).
+Please follow instruction on our [wiki](https://github.com/WingLongitude/explorer/wiki).
 ```
 gradle clean buildProduction
 ```
