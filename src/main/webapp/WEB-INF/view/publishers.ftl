@@ -31,13 +31,13 @@
 				});	
 				
 		        <#list page.allPublishers as publisher>
-			        <#if (publisher.decimallatitude?has_content) || (publisher.decimallongitude?has_content)>
-							<#assign link = "" + publisher.name + "">
-							<#assign popuptxt = "
-							" + rc.getMessage("publisherspage.recordnumber") + " " + publisher.getRecord_count()?string>
-							new L.marker([${publisher.decimallatitude()?string?replace(",",".")}, ${publisher.decimallongitude()?string?replace(",",".")}], {icon: institute}).bindPopup("${link} ${popuptxt}").addTo(map);
-						</#if>							
-		        </#list>
+					<#if (publisher.decimallatitude?has_content) || (publisher.decimallongitude?has_content)>
+						<#assign link = "" + publisher.name + "">
+						<#assign popuptxt = "
+						" + rc.getMessage("publisherspage.recordnumber") + " " + publisher.getRecord_count()?string>
+						new L.marker([${publisher.decimallatitude()?string?replace(",",".")}, ${publisher.decimallongitude()?string?replace(",",".")}], {icon: institute}).bindPopup("${link} ${popuptxt}").addTo(map);
+					</#if>
+				</#list>
 				L.control.fullscreen().addTo(map);
 	   	        map.on('click', onMarkerClick);
 		        function onMarkerClick(e) {
