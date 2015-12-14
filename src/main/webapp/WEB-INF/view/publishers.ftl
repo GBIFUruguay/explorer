@@ -31,16 +31,12 @@
 				});	
 				
 		        <#list page.allPublishers as publisher>
-			        <#if (publisher.getDecimallatitude()?has_content)>
-			    		<#assign latitude = publisher.getDecimallatitude()?string?replace(",",".")>
-			    	</#if>
-			    	<#if (publisher.getDecimallongitude()?has_content)>
-			    		<#assign longitude = publisher.getDecimallongitude()?string?replace(",",".")>
-			    	</#if>
-		    		<#assign link = "<a href=" + "'" + rc.getMessage("publisherspage.publisherlink.map") + publisher.getAuto_id() + "'" + ">" + publisher.getName() + "</a>">
-		    		<#assign popuptxt = "</br>" + rc.getMessage("publisherspage.recordnumber") + " " + publisher.getRecord_count()?string>
-		   	        new L.marker([${latitude}, ${longitude}], {icon: institute}).bindPopup("${link} ${popuptxt}").addTo(map);
-							
+			        <#if (publisher.decimallatitude?has_content) || (publisher.decimallongitude?has_content)>
+							<#assign link = "" + publisher.name + "">
+							<#assign popuptxt = "
+							" + rc.getMessage("publisherspage.recordnumber") + " " + publisher.getRecord_count()?string>
+							new L.marker([${publisher.decimallatitude()?string?replace(",",".")}, ${publisher.decimallongitude()?string?replace(",",".")}], {icon: institute}).bindPopup("${link} ${popuptxt}").addTo(map);
+						</#if>							
 		        </#list>
 				L.control.fullscreen().addTo(map);
 	   	        map.on('click', onMarkerClick);
